@@ -11,13 +11,10 @@ $(document).ready(function () {
     // Use momentsjs to find out the current time
     // If it's less than current time (PAST) - it's in the and change color to blue.
 
-    // Get the 2 things I need to compare.  WHY DO I NEED TO USE .get HERE?
+    // Get the 2 things I need to compare.  
 
     var timeBlock = $('.time-block').get();
     var currentTime = moment().format('HH')
-    var table = $("td");
-
-    //  The .each can make the timeBlock elements an  array.  
 
     console.log(timeBlock)
 
@@ -34,18 +31,23 @@ $(document).ready(function () {
         console.log(parseInt(currentHour));
 
         // An if statement to compare current time and time on calendar
-        //   Need to parse the string time into an integter. If currentHour is less than currentTime then we need to change the color of the row. 
+        // Need to parse the string time into an integter. If currentHour is less than currentTime then we need to change the color of the row. 
 
         if (parseInt(currentHour) < parseInt(currentTime)) {
 
             console.log("inside if")
-            // It will iterater and target each timeBlock to change the value of the class to the .past style 
+            // Iterate and target each timeBlock to change the value of the class to the .past style 
+
             $("#" + i).attr("class", "past");
+
+// Use else if - iterate and target each timeBlock to change the value of the class to the .present style 
 
         } else if (parseInt(currentHour) == parseInt(currentTime)) {
             $("#" + i).attr("class", "present");
             
         } 
+
+        // If neither of those are true, then else - has future class
         
         else 
      // (parseInt(currentHour) < parseInt(currentTime)) 
@@ -55,14 +57,12 @@ $(document).ready(function () {
 
     }
 
-    // STORE THE TIME AND USER INPUT IN LOCAL STORAGE.  BUT DON'T DISPLAY IT, I GUESS?  Need to set the info for storage. But since we don't need to display the info, no need to "get" it
-    // Need an event listener for when user clicks on the save button, then value of currentHour and input text is stored in local storage.  Should probably use .each() to iterate over each of the matched elements.
+    // Need an event listener for when user clicks on the save button, then value of currentHour and input text is stored in local storage. 
 
-    // CHECK THE STORAGE in the console to make sure data being saved.  IT'S UNDEFINED!
+    // Checked in the console to make sure data being saved.
 
     $(".saveBtn").on("click", function() {
-        // get nearby values
-                // TODO :  get hold of the description
+       
 
         var value = $(this).parent().parent().find('textarea').val();
         console.log(value)
